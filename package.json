@@ -1,0 +1,19 @@
+{
+  "name": "curso-apirest-javascript-practico",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/manueltapia18/curso-apiRest-javascript-practico.git"
+  },
+  "author": "Manuel Tapia Sarmiento",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/manueltapia18/curso-apiRest-javascript-practico/issues"
+  },
+  "homepage": "https://github.com/manueltapia18/curso-apiRest-javascript-practico#readme"
+}
