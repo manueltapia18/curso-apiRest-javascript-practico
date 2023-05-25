@@ -1,11 +1,20 @@
+const api = axios.create({
+  baseUrl : 'https://api.themoviedb.org/3/',
+  Headers: {
+    'Content-type': 'application/json;charset=utf-8'
+  },
+  params: {
+    'apy_key': API_KEY,
+  }
+});
+
 
 async function getTrendingMoviesPreview() {
-  const res = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`);
-  const data = await res.json();
-  
+  const {data} = await api('trending/movie/day');
   const movies = data.results;
+  
   movies.forEach(movie => {
-    const trendingMoviesPreviewList = document.querySelector('#trendingPreview .trendingPreview-movieList')
+    const trendingPreviewMoviesContainer = document.querySelector('#trendingPreview .trendingPreview-movieList')
     const movieContainer = document.createElement('div');
     movieContainer.classList.add('movie-container');
     const movieImg = document.createElement('img');
@@ -14,19 +23,18 @@ async function getTrendingMoviesPreview() {
     movieImg.setAttribute('src', `https://image.tmdb.org/t/p/w300/${movie.backdrop_path}`);
     
     movieContainer.appendChild(movieImg);
-    trendingMoviesPreviewList.appendChild(movieContainer);
+    trendingPreviewMoviesContainer.appendChild(movieContainer);
   });
   
 }
-
-
+getTrendingMoviesPreview();
+ 
 async function getcategoriesPreview() {
-  const res = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`);
-  const data = await res.json();
+  const {data} = await api('genre/movie/list');
   
   const categories = data.genres;
   categories.forEach(categori => {
-    const categoriesPreviewList = document.querySelector('#categoriesPreview .categoriesPreview-list')
+    const previewCategoriesContainer = document.querySelector('#categoriesPreview .categoriesPreview-list')
     const categoryContainer = document.createElement('div');
     categoryContainer.classList.add('category-container');
     const categoryTitle = document.createElement('h3');
@@ -37,10 +45,10 @@ async function getcategoriesPreview() {
     categoryTitle.appendChild(categoryTitleText);
     categoryContainer.appendChild(categoryTitle);
     console.log(categoryContainer);
-    categoriesPreviewList.appendChild(categoryContainer)
+    previewCategoriesContainer.appendChild(categoryContainer)
   });
 }
-
+getcategoriesPreview()
 
 
 
